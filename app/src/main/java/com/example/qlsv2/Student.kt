@@ -1,9 +1,12 @@
 package com.example.qlsv2
 
-data class Student(
-    var id: Int = 0,
-    var name: String,
-    var studentId: String,
-    var phone: String
-)
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "students")
+data class Student(
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val name: String,
+    val studentId: String,
+    val phone: String
+)

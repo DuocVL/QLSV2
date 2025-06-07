@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp")
 }
-
 android {
     namespace = "com.example.qlsv2"
     compileSdk = 35
@@ -47,7 +48,10 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
+
 
 dependencies {
 
@@ -69,4 +73,10 @@ dependencies {
 
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
+
+    val roomVersion = "2.6.1"
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion") // ✅ Phần quan trọng!
 }
